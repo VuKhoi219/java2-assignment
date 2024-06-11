@@ -12,12 +12,12 @@ public class MyArticleService implements ArticleService {
     @Override
     public ArrayList<String> getLinks(String url) {
         HashSet<String> links = new HashSet();
-        try{
+        try {
             Document doc = Jsoup.connect(url).get();
             Elements articles = doc.select("a");
-            for(int i=0; i<articles.size(); i++){
+            for (int i = 0; i < articles.size(); i++) {
                 String href = articles.get(i).attr("href");
-                if(href.contains("https://tienphong") && href.contains(".tpo")){
+                if (href.contains("https://tienphong") && href.contains(".tpo")) {
                     links.add(href);
                 }
             }
@@ -30,7 +30,7 @@ public class MyArticleService implements ArticleService {
     @Override
     public Article getArticle(String url) {
         Document document = null;
-        try{
+        try {
             document = Jsoup.connect(url).get();
             String title = document.select("h1.article__title ").text();
             String description = document.select("div.article__sapo").text();

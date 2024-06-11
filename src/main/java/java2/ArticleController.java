@@ -1,9 +1,10 @@
 package java2;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class ArticleController {
-// lấy link con qua link cha
+public class ArticleController extends  Thread{
+    // lấy link con qua link cha
     public void linkExtractor(ArticleService articleService, String url) {
         MySqlArticleRepository mySqlArticleRepository = new MySqlArticleRepository();
         ArrayList<String> getLinks = articleService.getLinks(url);
@@ -13,8 +14,12 @@ public class ArticleController {
             mySqlArticleRepository.save(article);
         }
     }
-// Hiển thị
-    public void finByUrl(String url) {
+
+    // Hiển thị
+    public void finByUrl() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the URL you want to view.");
+        String url = scanner.nextLine();
         MySqlArticleRepository mySqlArticleRepository = new MySqlArticleRepository();
         Article article = mySqlArticleRepository.findByUrl(url);
         if (article != null) {
@@ -31,7 +36,8 @@ public class ArticleController {
             System.out.println("Article not found");
         }
     }
-    public void finAll(){
+
+    public void finAll() {
         MySqlArticleRepository mySqlArticleRepository = new MySqlArticleRepository();
         ArrayList<Article> articles = mySqlArticleRepository.findAll();
         for (Article article : articles) {
