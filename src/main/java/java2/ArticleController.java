@@ -3,7 +3,7 @@ package java2;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ArticleController extends  Thread{
+public class ArticleController {
     // lấy link con qua link cha
     public void linkExtractor(ArticleService articleService, String url) {
         MySqlArticleRepository mySqlArticleRepository = new MySqlArticleRepository();

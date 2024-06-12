@@ -2,7 +2,7 @@ package java2;
 
 import java.util.Scanner;
 
-public class Application extends Thread {
+public class Application {
     public static void main(String[] args) {
         generateMenu();
     }

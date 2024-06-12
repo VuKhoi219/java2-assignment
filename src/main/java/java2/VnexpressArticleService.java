@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class VnexpressArticleService implements ArticleService {
+public class VnexpressArticleService  implements ArticleService {
     @Override
     public ArrayList<String> getLinks(String url) {
         HashSet<String> links = new HashSet();
@@ -24,7 +24,7 @@ public class VnexpressArticleService implements ArticleService {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return new ArrayList(links);
+        return new ArrayList<>(links);
     }
 
     @Override
@@ -46,8 +46,11 @@ public class VnexpressArticleService implements ArticleService {
             article.setCreatedAt(create);
             return article;
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+
+            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
-        return null;
     }
+
 }
